@@ -29,7 +29,11 @@ impl TransactionBuilder<AnyNetwork> for WithOtherFields<TransactionRequest> {
     fn input(&self) -> Option<&Bytes> {
         self.deref().input()
     }
-
+    
+    fn into_input(self) -> Option<Bytes> {
+        self.inner.into_input()
+    }
+    
     fn set_input<T: Into<Bytes>>(&mut self, input: T) {
         self.deref_mut().set_input(input);
     }
